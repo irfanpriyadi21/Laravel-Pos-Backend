@@ -24,7 +24,7 @@
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
-                       
+                       @include('layouts.alert')
                     </div>
                 </div>
                 <h2 class="section-title">Users</h2>
@@ -67,7 +67,7 @@
 
                                             <th>Name</th>
                                             <th>Email</th>
-
+                                            <th>Phone Number</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -78,6 +78,9 @@
                                                 </td>
                                                 <td>
                                                     {{ $user->email }}
+                                                </td>
+                                                <td>
+                                                    {{ $user->phone }}
                                                 </td>
 
                                                 <td>{{ $user->created_at }}</td>
@@ -94,9 +97,13 @@
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
                                                                 value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
-                                                            </button>
+                                                                <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                                    <i class="fas fa-times"></i> Delete
+                                                                </button>
+                                                            {{-- <button class="btn btn-danger"
+                                                                data-confirm="Realy?|Do you want to delete {{$user->name }} ?"
+                                                                data-confirm-yes="submit({{ route('user.destroy', $user->id) }})"
+                                                            ><i class="fas fa-times"></i> Delete</button> --}}
                                                         </form>
                                                     </div>
                                                 </td>
