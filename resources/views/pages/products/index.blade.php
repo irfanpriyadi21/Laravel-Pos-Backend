@@ -85,12 +85,12 @@
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('user.edit', $product->id) }}'
+                                                        <a href='{{ route('product.edit', $product->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
-                                                        <form action="{{ route('user.destroy', $product->id) }}" method="POST"
+                                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"

@@ -14,7 +14,7 @@ class ProductController extends Controller
             return $query->where('name', 'like', '%'.$name.'%');
         })
         ->orderBy('id', 'desc')
-        ->paginate(10);;
+        ->paginate(10);
         return view('pages.products.index', compact('products'));
     }
 
@@ -30,7 +30,7 @@ class ProductController extends Controller
 
     public function edit($id){
         $product = \App\Models\Product::findOrFail($id);
-        return view('pages.product.edit', compact('product'));
+        return view('pages.products.edit', compact('product'));
     }
 
     public function update(Request $request, $id){
