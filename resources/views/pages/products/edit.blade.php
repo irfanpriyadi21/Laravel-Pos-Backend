@@ -25,7 +25,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Product</h2>
+                <h2 class="section-title">Edit Product</h2>
 
                 <div class="card">
                     <form action="{{ route('product.update', $product) }}" method="POST">
@@ -49,6 +49,22 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control @error('description')
+                                            is-invalid
+                                        @enderror"
+                                        name="description"
+                                        data-height="150">
+                                        {{$product->description}}
+                                        </textarea>
+                                        @error('description')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label>Stock</label>
                                 <input type="number"
                                     class="form-control @error('stock')
@@ -63,20 +79,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Roles</label>
+                                <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="food" class="selectgroup-input"
+                                        <input type="radio" name="category" value="food" class="selectgroup-input"
                                             @if ($product->category == 'food') checked @endif>
                                         <span class="selectgroup-button">Food</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="snack" class="selectgroup-input"
+                                        <input type="radio" name="category" value="snack" class="selectgroup-input"
                                             @if ($product->category == 'snack') checked @endif>
                                         <span class="selectgroup-button">Snack</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="drink" class="selectgroup-input"
+                                        <input type="radio" name="category" value="drink" class="selectgroup-input"
                                             @if ($product->category == 'drink') checked @endif>
                                         <span class="selectgroup-button">Drink</span>
                                     </label>

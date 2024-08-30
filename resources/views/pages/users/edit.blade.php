@@ -25,7 +25,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Users</h2>
+                <h2 class="section-title">Edit Users</h2>
 
 
 

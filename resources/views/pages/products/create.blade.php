@@ -47,6 +47,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control @error('description')
+                                            is-invalid
+                                        @enderror"
+                                        name="description"
+                                        data-height="150">
+
+                                        </textarea>
+                                        @error('description')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Stock</label>
                                 <input type="number"
                                     class="form-control @error('stock')
