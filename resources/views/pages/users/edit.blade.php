@@ -23,12 +23,8 @@
                     <div class="breadcrumb-item">Users</div>
                 </div>
             </div>
-
             <div class="section-body">
                 <h2 class="section-title">Edit Users</h2>
-
-
-
                 <div class="card">
                     <form action="{{ route('user.update', $user) }}" method="POST">
                         @csrf
