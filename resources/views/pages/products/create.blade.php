@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Advanced Forms')
+@section('title', 'Product Create')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -26,9 +26,6 @@
 
             <div class="section-body">
                 <h2 class="section-title">Product</h2>
-
-
-
                 <div class="card">
                     <form action="{{ route('product.store') }}" method="POST">
                         @csrf
@@ -50,57 +47,35 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
+                                <label>Stock</label>
+                                <input type="number"
+                                    class="form-control @error('stock')
                                 is-invalid
                             @enderror"
-                                    name="email">
-                                @error('email')
+                                    name="stock">
+                                @error('stock')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+
+
                             <div class="form-group">
-                                <label>Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-lock"></i>
-                                        </div>
-                                    </div>
-                                    <input type="password"
-                                        class="form-control @error('password')
-                                is-invalid
-                            @enderror"
-                                        name="password">
-                                </div>
-                                @error('password')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="number" class="form-control" name="phone">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Roles</label>
+                                <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
+                                        <input type="radio" name="category" value="food" class="selectgroup-input"
                                             checked="">
-                                        <span class="selectgroup-button">Admin</span>
+                                        <span class="selectgroup-button">Food</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="STAFF" class="selectgroup-input">
-                                        <span class="selectgroup-button">Staff</span>
+                                        <input type="radio" name="category" value="snack" class="selectgroup-input">
+                                        <span class="selectgroup-button">Snack</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="USER" class="selectgroup-input">
-                                        <span class="selectgroup-button">User</span>
+                                        <input type="radio" name="category" value="drink" class="selectgroup-input">
+                                        <span class="selectgroup-button">Drink</span>
                                     </label>
 
                                 </div>

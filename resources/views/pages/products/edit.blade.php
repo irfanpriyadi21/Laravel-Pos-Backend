@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Products')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -27,8 +27,6 @@
             <div class="section-body">
                 <h2 class="section-title">Product</h2>
 
-
-
                 <div class="card">
                     <form action="{{ route('product.update', $product) }}" method="POST">
                         @csrf
@@ -51,59 +49,36 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
+                                <label>Stock</label>
+                                <input type="number"
+                                    class="form-control @error('stock')
                                 is-invalid
                             @enderror"
-                                    name="email" value="{{ $product->email }}">
-                                @error('email')
+                                    name="stock" value="{{ $product->stock }}">
+                                @error('stock')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-lock"></i>
-                                        </div>
-                                    </div>
-                                    <input type="password"
-                                        class="form-control @error('password')
-                                is-invalid
-                            @enderror"
-                                        name="password">
-                                </div>
-                                @error('password')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="number" class="form-control" name="phone" value="{{ $product->phone }}">
-                            </div>
+
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
-                                            @if ($product->roles == 'ADMIN') checked @endif>
-                                        <span class="selectgroup-button">Admin</span>
+                                        <input type="radio" name="roles" value="food" class="selectgroup-input"
+                                            @if ($product->category == 'food') checked @endif>
+                                        <span class="selectgroup-button">Food</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="STAFF" class="selectgroup-input"
-                                            @if ($product->roles == 'STAFF') checked @endif>
-                                        <span class="selectgroup-button">Staff</span>
+                                        <input type="radio" name="roles" value="snack" class="selectgroup-input"
+                                            @if ($product->category == 'snack') checked @endif>
+                                        <span class="selectgroup-button">Snack</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="USER" class="selectgroup-input"
-                                            @if ($product->roles == 'USER') checked @endif>
-                                        <span class="selectgroup-button">User</span>
+                                        <input type="radio" name="roles" value="drink" class="selectgroup-input"
+                                            @if ($product->category == 'drink') checked @endif>
+                                        <span class="selectgroup-button">Drink</span>
                                     </label>
 
                                 </div>
