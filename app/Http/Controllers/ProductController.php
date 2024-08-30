@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function index(Request $request){
-        $products = \App\Models\Product::paginate(10);
+        $products = DB::table('products')
+        ->when($request->input('name'), function($query, $name){
+            return $query->where('name', 'like', '%'.$name.'%');
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(10);;
         return view('pages.products.index', compact('products'));
     }
 
