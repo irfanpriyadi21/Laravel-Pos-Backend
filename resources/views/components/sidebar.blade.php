@@ -18,7 +18,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-header">User</li>
             <li class="nav-item dropdown">
                 <a href="#"
                     class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>User</span></a>
@@ -29,7 +28,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-header">Product</li>
             <li class="nav-item dropdown">
                 <a href="#"
                     class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Product</span></a>
