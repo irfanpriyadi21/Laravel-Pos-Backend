@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Product as prods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -23,25 +24,45 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'name' => 'required|min:3|unique:products',
+            'price' => 'required|integer',
+            'stock' => 'required|integer',
+            'category' => 'required|in:food,drink,snack',
+            'image' => 'required|image|mimes:png,jpg,jpeg'
+        ]);
+        $filename = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/products', $filename);
         $data = $request->all();
-        \App\Models\Product::create($data);
+
+        $product = new prods;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = (int) $request->price;
+        $product->stock = (int) $request->stock;
+        $product->category = $request->category;
+        $product->image = $filename;
+        $product->save();
+        // dd($product);
+
+
         return redirect()->route('product.index')->with('success', 'Product Successfully Created');
     }
 
     public function edit($id){
-        $product = \App\Models\Product::findOrFail($id);
+        $product = prods::findOrFail($id);
         return view('pages.products.edit', compact('product'));
     }
 
     public function update(Request $request, $id){
         $data = $request->all();
-        $product = \App\Models\Product::findOrFail($id);
+        $product = prods::findOrFail($id);
         $product->update($data);
         return redirect()->route('product.index')->with('success', 'Product Sucessfully Updated');
     }
 
     public function destroy($id){
-        $product = \App\Models\Product::findOrFail($id);
+        $product = prods::findOrFail($id);
         $product->delete();
         return redirect()->route('product.index')->with('success', 'Product Successfuly Deleted');
         // aaa
