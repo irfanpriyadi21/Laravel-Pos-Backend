@@ -13,12 +13,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = models\Product::orderBy('id', 'desc')->get();
-        return response()->json([
-            'success' => true,
-            'message' => 'List Data Product',
-            'data' => $product
-        ], 200);
+        if(auth('sanctum')->check()){
+            $product = models\Product::orderBy('id', 'desc')->get();
+            return response()->json([
+                'success' => true,
+                'message' => 'List Data Product',
+                'data' => $product
+            ], 200);
+
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'No Authenticate'
+            ], 400);
+        }
     }
 
     /**
